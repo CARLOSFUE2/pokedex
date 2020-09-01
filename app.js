@@ -1,3 +1,4 @@
+/*
 //objets
 const mainScreen = document.querySelector('.main-screen');
 const pokeName= document.querySelector('.poke-name');
@@ -17,6 +18,7 @@ const rigthButton= document.querySelector('.rigth-button');
 const TYPES = ['normal','fighting','flying' ,'poison' , 'ground' , 'rock' , 'bug' ,'steel' ,'ghost' , 'fire' ,'water','grass', 'electric','psychic','ice','dragon','dark','fairy'
 ];
 const urlInitial='https://pokeapi.co/api/v2/pokemon?offset=0&limit=20';
+
 let urlActuallly='';
 let prevUrl=null;
 let nextUrl=null;
@@ -120,3 +122,71 @@ for (const pokeListIten of pokeListItens){
 //inicialite the game
 
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
+
+*/
+const url= 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20';
+
+
+function init(url) {
+    fetch(url)
+      .then((result) => result.json())
+      .then((json) => {
+        console.log(json);
+  
+        // Recorrer la lista de pokemones para luego renderizar en el html
+        
+        json.results.forEach((element) => {
+          $(".right-container__screen").append(`
+          <div data-url="${element.url}" onclick="getPokemonByUrl('${element.url}')" class="list-item">${element.name}</div>
+          `);
+          
+          //<div data-url="${element.url}" class="list-item">${element.name}</div>
+        });
+      });
+    
+  };
+
+ function getPokemonByUrl(url) {
+     console.log(url);
+     fetch(url)
+     .then((result)=> result.json())
+     .then( (element) => {
+         console.log(element); 
+        //variables  
+        let id= element.id;
+        let name= element.name;
+        let weight=element.weight;
+        let height= element.height;
+        //cargar las cajas de texto
+        document.getElementById("myid").textContent= id;
+        document.getElementById("myname").textContent=name;
+        document.getElementById("myweight").textContent= weight;
+        document.getElementById("myheight").textContent= height;
+         let colorType= document.getElementById("screen");
+
+         //RESETEA EL COLOR DE FONDO
+         colorType.className = 'main-screen';
+         //resetear ventana tipos
+        $(".stats__types").empty();
+
+         //AGREGAR IMAGENES
+        document.getElementById("front").src = element.sprites.front_default;
+        document.getElementById("back").src = element.sprites.back_default;
+        //agregar color de fondo
+        colorType.classList.add(element.types[0].type.name);
+        // cargar caja de typos
+        element.types.forEach((type) => {
+            $(".stats__types").append(`
+            <div class="poke-type-one">${type.type.name}  </div>
+            `);
+            
+        });
+     })
+};
+//para cargar una nueva lista de pokemones
+$("#right-button").click(function(){
+   url='https://pokeapi.co/api/v2/pokemon?offset=0&limit=20';
+    
+  });
+ 
+    init(url);

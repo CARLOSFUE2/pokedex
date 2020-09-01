@@ -23,26 +23,25 @@
         <div class="left-container__main-section">
           <div class="main-section__white">
             <div class="main-section__black">
-              <div class="main-screen hide">
+              <div class="main-screen" id="screen">
                 <div class="screen__header">
-                  <span class="poke-name"></span>
-                  <span class="poke-id"></span>
+                  <span class="poke-name" id="myname"></span>
+                  <span class="poke-id" id="myid"></span>
                 </div>
                 <div class="screen__image">
-                  <img src="" class="poke-front-image" alt="front">
-                  <img src="" class="poke-back-image" alt="back">
+                  <img src="" class="poke-front-image"  id= "front" alt="front">
+                  <img src="" class="poke-back-image" id= "back" alt="back">
                 </div>
                 <div class="screen__description">
                   <div class="stats__types">
-                    <span class="poke-type-one"></span>
-                    <span class="poke-type-two"></span>
+                  
                   </div>
                   <div class="screen__stats">
                     <p class="stats__weight">
-                      weight: <span class="poke-weight"></span>
+                      weight:<p id="myweight"></p> <span class="poke-weight"></span>
                     </p>
                     <p class="stats__height">
-                      height: <span class="poke-height"></span>
+                      height:<p id="myheight"></p> <span class="poke-height"></span>
                     </p>
                   </div>
                 </div>
@@ -72,36 +71,18 @@
     <div class="right-container">
       <div class="right-container__black">
         <div class="right-container__screen">
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
-          <div class="list-item"></div>
+       
         </div>
       </div>
       <div class="right-container__buttons">
         <div class="left-button">Prev</div>
-        <div class="right-button">Next</div>
+        <div class="right-button" id="right-button">Next</div>
       </div>
     </div>
   </div>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="app.js"></script>
+  
   
 </body>
 </html>
